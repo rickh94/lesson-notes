@@ -1,0 +1,26 @@
+{
+  "name": "hello-world",
+  "version": "1.0.0",
+  "description": "netlify functions:create - hello world in typescript",
+  "main": "hello-world.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "netlify",
+    "serverless",
+    "typescript"
+  ],
+  "author": "Netlify",
+  "license": "MIT",
+  "dependencies": {
+    "@netlify/functions": "^1.3.0",
+    "aws-sdk": "^2.1341.0",
+    "typescript": "^4.0.0",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.5",
+    "@types/uuid": "^9.0.1"
+  }
+}
