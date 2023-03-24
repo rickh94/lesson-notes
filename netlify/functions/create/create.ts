@@ -39,24 +39,32 @@ export const handler: Handler = async (event: HandlerEvent, context: HandlerCont
   const fileId = uuid.v4();
 
 
-  s3.putObject({
-    Body: event.body,
-    Bucket: "student-lesson-notes",
-    Key: `${fileId}.json`,
-  }, function(err, data) {
-    if (err) {
-      console.log(err, err.stack);
-    } else {
-      console.log(data)
-    }
-  });
+  try {
+    // awaiting this so that the redirect works correctly on the frontend.
+    // without waiting, the redirect could occur before the upload is 
+    // complete.
+    await s3.putObject({
+      Body: event.body,
+      Bucket: "student-lesson-notes",
+      Key: `${fileId}.json`,
+    }).promise();
 
-  return {
-    statusCode: 200,
-    body: JSON.stringify({
-      id: fileId,
-    }),
+    return {
+      statusCode: 200,
+      body: JSON.stringify({
+        id: fileId,
+      }),
+    }
+  } catch (err) {
+    console.log(err);
+    return {
+      statusCode: 500,
+      body: JSON.stringify({
+        message: "Could not upload data."
+      })
+    }
   }
+
 }
 
 function bodyIsValid(body: string): boolean {
