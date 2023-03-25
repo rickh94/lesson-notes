@@ -1,0 +1,19 @@
+{ pkgs ? import <nixpkgs> { } }:
+
+pkgs.mkShell {
+  packages = [
+    pkgs.nodejs-16_x
+    pkgs.nodePackages.pnpm
+    pkgs.nodePackages.typescript
+    pkgs.nodePackages.vercel
+    pkgs.openssl
+    pkgs.pkg-config
+    pkgs.clang
+    pkgs.libiconv
+    pkgs.sccache
+    pkgs.darwin.apple_sdk.frameworks.SystemConfiguration
+    pkgs.backblaze-b2
+    pkgs.nodePackages.svelte-language-server
+  ];
+}
+

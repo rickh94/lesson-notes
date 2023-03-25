@@ -1,0 +1,30 @@
+[package]
+name = "lesson-notes-functions"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+tokio = { version = "1", features = ["macros"] }
+serde_json = { version = "1", features = ["raw_value"] }
+# Documentation: https://docs.rs/vercel_runtime/latest/vercel_runtime
+vercel_runtime = { version = "0.3.4" }
+serde = "1.0.158"
+rusoto_core = "0.48.0"
+rusoto_s3 = "0.48.0"
+uuid = { version = "1.3.0", features = ["v4"] }
+rusoto_credential = "0.48.0"
+url = "2.3.1"
+
+[lib]
+path = "src-rs/lib.rs"
+
+[[bin]]
+name = "create"
+path = "api/create.rs"
+
+[[bin]]
+name = "view"
+path = "api/view.rs"
+

@@ -5,7 +5,7 @@ export class NotesData {
   exercises: PracticeItem[];
   pieces: PracticeItem[];
   generalNotes: string;
-  // TODO: add lesson date
+  date: Date;
 
   constructor(
     warmups: PracticeItem[] = [],
@@ -17,6 +17,7 @@ export class NotesData {
     this.exercises = exercises;
     this.pieces = pieces;
     this.generalNotes = generalNotes;
+    this.date = new Date();
   }
 
 }

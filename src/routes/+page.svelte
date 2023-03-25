@@ -36,7 +36,7 @@
 
   async function createNotes() {
     try {
-      const res = await fetch(`/.netlify/functions/create`, {
+      const res = await fetch(`/api/create`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -49,6 +49,10 @@
     } catch (err) {
       console.log(err);
     }
+  }
+
+  function confirmDelete() {
+    throw "not implemented"
   }
 
 </script>

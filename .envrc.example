@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+use nix  
+export ACCESS_KEY_ID=
+export SECRET_ACCESS_KEY=
