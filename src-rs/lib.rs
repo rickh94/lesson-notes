@@ -10,7 +10,6 @@ pub struct PracticeItem {
     pub title: String,
     pub resources: Vec<String>,
     pub notes: String,
-    pub label: String,
     pub id: f64,
 }
 

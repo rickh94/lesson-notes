@@ -18,3 +18,6 @@ Title + Textbox
 Type of piece: working, review, preview
 share/download links
 upload resources?
+
+## Additional features
+allow typing notes
