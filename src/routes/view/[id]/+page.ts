@@ -1,15 +1,18 @@
 import { error } from '@sveltejs/kit';
 import { NotesData } from '$lib/notesData';
 import type { PageLoad } from './$types';
+import { PUBLIC_ENDPOINT } from '$env/static/public';
 
-export const load = (async ({ params }) => {
+export const load = (async ({ params, fetch }) => {
   if (!params.id) {
     throw error(404, "Could not find matching notes");
   }
 
   let notesData: NotesData;
   try {
-    const response = await fetch(`http://localhost:3000/api/view?id=${params.id}`);
+    // This is a hack for development. relative url function calls don't work here
+    // in development, but should work in production.
+    const response = await fetch(`${PUBLIC_ENDPOINT}/api/view?id=${params.id}`);
     const data = await response.json();
     if (!('warmups' in data)
       || !('exercises' in data)
@@ -21,7 +24,7 @@ export const load = (async ({ params }) => {
     notesData = new NotesData(data.warmups, data.exercises, data.pieces, data.generalNotes);
   } catch (err: any) {
     console.log(err);
-    throw error(500, 'Internal server error')
+    throw error(500, 'Internal server error' + err)
   }
   return {
     ...notesData

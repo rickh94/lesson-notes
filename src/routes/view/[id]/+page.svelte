@@ -29,14 +29,16 @@
 	<header
 		class="w-full rounded p-2 md:px-4 bg-white border-carribean-current border-2 shadow-md bg-opacity-90 flex flex-wrap space-y-2 sm:space-y-0 items-center justify-between"
 	>
-		<div>
-			<h1 class="text-3xl pl-2 text-black font-bold">
+		<div class="w-full sm:w-auto">
+			<h1 class="text-3xl pl-2 text-black font-bold text-center">
 				<time datetime={notesData.date.toISOString()}>
 					{notesData.date.toDateString()}
 				</time>
 			</h1>
 		</div>
-		<div class="space-x-2 flex justify-end w-full sm:w-auto">
+		<div
+			class="space-x-2 space-y-2 sm:space-y-0 flex-col sm:flex-row flex justify-end w-full sm:w-auto"
+		>
 			<div class="flex justify-center items-center mr-2">
 				<div>
 					<span class="inline-block pl-[0.15rem] hover:cursor-pointer">Plain View</span>
@@ -54,16 +56,18 @@
 					>
 				</div>
 			</div>
-			<button
-				on:click={createNew}
-				class="px-8 bg-wine text-xl rounded shadow shadow-ash-gray font-bold h-12 flex items-center text-white"
-				>New</button
-			>
-			<button
-				on:click={copyLink}
-				class="px-8 bg-carribean-current shadow shadow-ash-gray text-xl rounded font-bold h-12 flex items-center text-white"
-				>Copy Link</button
-			>
+			<div class="flex justify-center sm:justify-end space-x-2">
+				<button
+					on:click={createNew}
+					class="px-8 bg-wine text-xl rounded shadow shadow-ash-gray font-bold h-12 flex items-center text-white"
+					>New</button
+				>
+				<button
+					on:click={copyLink}
+					class="px-8 bg-carribean-current shadow shadow-ash-gray text-xl rounded font-bold h-12 flex items-center text-white"
+					>Copy Link</button
+				>
+			</div>
 		</div>
 	</header>
 </div>

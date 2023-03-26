@@ -2,3 +2,4 @@
 use nix  
 export ACCESS_KEY_ID=
 export SECRET_ACCESS_KEY=
+export PUBLIC_ENDPOINT='http://localhost:3000'
