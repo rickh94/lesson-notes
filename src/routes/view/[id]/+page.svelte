@@ -92,14 +92,18 @@
 				<h2 class="font-bold text-2xl underline underline-offset-4 decoration-2 mb-4">
 					General Notes
 				</h2>
-				<p>{data.generalNotes}</p>
+				{#each data.generalNotes.split('\n') as line}
+					<p>{line}</p>
+				{/each}
 			</section>
 		{:else}
 			<section id="general-notes">
 				<h2 class="font-bold text-2xl underline underline-offset-4 decoration-2 mb-4">
 					General Notes
 				</h2>
-				<p>{data.generalNotes}</p>
+				{#each data.generalNotes.split('\n') as line}
+					<p>{line}</p>
+				{/each}
 			</section>
 		{/if}
 	{/if}
