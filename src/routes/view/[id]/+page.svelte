@@ -3,6 +3,7 @@
 	import { NotesData } from '$lib/notesData';
 	import type { PageData } from './$types';
 	import { goto } from '$app/navigation';
+	import DisplaySection from '$lib/DisplaySection.svelte';
 
 	export let data: PageData;
 	$: notesData = new NotesData(data.warmups, data.exercises, data.pieces, data.generalNotes);
@@ -73,162 +74,33 @@
 </div>
 
 <main class="max-w-6xl px-4 mx-auto z-10">
-	<div class="h-32" />
-	{#if richView}
-		<section
-			id="warmups"
-			class="my-8 bg-white shadow-md shadow-ash-gray rounded p-4 sm:p-8 flex flex-col border border-ash-gray"
-		>
-			<h2 class="font-bold text-2xl underline underline-offset-4 decoration-2 mb-2">
-				Warmups and Scales
-			</h2>
-			<!-- TODO: make either the navbar or sections full width on mobile -->
-			{#each data.warmups as warmup (warmup.id)}
-				<h4 class="font-bold text-xl text-carribean-current">{warmup.title}</h4>
-				<p class="mt-2">{warmup.notes}</p>
-				{#each warmup.resources as resource}
-					<p class="mt-2">
-						<strong class="font-bold">Resource:</strong>&nbsp;
-						{#if resource.includes('http')}
-							<a
-								href={resource}
-								class="hover:underline text-blue-500"
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								{resource}
-							</a>
-						{:else}
-							{resource}
-						{/if}
-					</p>
-				{/each}
-			{/each}
-		</section>
-
-		<section
-			id="exercises"
-			class="my-8 bg-white shadow-md shadow-ash-gray rounded p-4 sm:p-8 flex flex-col border border-ash-gray"
-		>
-			<h2 class="font-bold text-2xl underline underline-offset-4 decoration-2 mb-2">
-				Etudes and Exercises
-			</h2>
-			<!-- TODO: make either the navbar or sections full width on mobile -->
-			{#each data.exercises as exercise (exercise.id)}
-				<h4 class="font-bold text-xl text-carribean-current">{exercise.title}</h4>
-				<p class="mt-2">{exercise.notes}</p>
-				{#each exercise.resources as resource}
-					<p class="mt-2">
-						<strong class="font-bold">Resource:</strong>&nbsp;
-						{#if resource.includes('http')}
-							<a
-								href={resource}
-								class="hover:underline text-blue-500"
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								{resource}
-							</a>
-						{:else}
-							{resource}
-						{/if}
-					</p>
-				{/each}
-			{/each}
-		</section>
-
-		<section
-			id="pieces"
-			class="my-8 bg-white shadow-md shadow-ash-gray rounded p-4 sm:p-8 flex flex-col border border-ash-gray"
-		>
-			<h2 class="font-bold text-2xl underline underline-offset-4 decoration-2 mb-2">Pieces</h2>
-			<!-- TODO: make either the navbar or sections full width on mobile -->
-			{#each data.pieces as piece (piece.id)}
-				<h4 class="font-bold text-xl text-carribean-current">{piece.title}</h4>
-				<p class="mt-2">{piece.notes}</p>
-				{#each piece.resources as resource}
-					<p class="mt-2">
-						<strong class="font-bold">Resource:</strong>&nbsp;
-						{#if resource.includes('http')}
-							<a
-								href={resource}
-								class="hover:underline text-blue-500"
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								{resource}
-							</a>
-						{:else}
-							{resource}
-						{/if}
-					</p>
-				{/each}
-			{/each}
-		</section>
-
-		<section
-			id="general-notes"
-			class="my-8 bg-white shadow-md shadow-ash-gray rounded p-4 sm:p-8 flex flex-col border border-ash-gray"
-		>
-			<h2 class="font-bold text-2xl underline underline-offset-4 decoration-2 mb-4">
-				General Notes
-			</h2>
-			<p>{data.generalNotes}</p>
-		</section>
-	{:else}
-		<section id="warmups-plain">
-			<h2 class="font-bold text-2xl underline underline-offset-4 decoration-2 mb-2">
-				Warmups and Scales
-			</h2>
-			<!-- TODO: make either the navbar or sections full width on mobile -->
-			{#each data.warmups as warmup (warmup.id)}
-				<h4 class="font-bold text-xl">{warmup.title}</h4>
-				<p class="mt-2">{warmup.notes}</p>
-				{#each warmup.resources as resource}
-					<p class="mt-2"><strong class="font-bold">Resource:</strong>&nbsp;{resource}</p>
-				{/each}
-			{/each}
-		</section>
-		<br />
-		<section id="exercises-plain">
-			<h2 class="font-bold text-2xl underline underline-offset-4 decoration-2 mb-2">
-				Etudes and Exercises
-			</h2>
-			<!-- TODO: make either the navbar or sections full width on mobile -->
-			{#each data.exercises as exercise (exercise.id)}
-				<h4 class="font-bold text-xl">{exercise.title}</h4>
-				<p class="mt-2">{exercise.notes}</p>
-				{#each exercise.resources as resource}
-					<p class="mt-2">
-						<strong class="font-bold">Resource:</strong>&nbsp;
-						{resource}
-					</p>
-				{/each}
-			{/each}
-		</section>
-
-		<br />
-		<section id="pieces">
-			<h2 class="font-bold text-2xl underline underline-offset-4 decoration-2 mb-2">Pieces</h2>
-			<!-- TODO: make either the navbar or sections full width on mobile -->
-			{#each data.pieces as piece (piece.id)}
-				<h4 class="font-bold text-xl">{piece.title}</h4>
-				<p class="mt-2">{piece.notes}</p>
-				{#each piece.resources as resource}
-					<p class="mt-2">
-						<strong class="font-bold">Resource:</strong>&nbsp;
-						{resource}
-					</p>
-				{/each}
-			{/each}
-		</section>
-
-		<br />
-		<section id="general-notes">
-			<h2 class="font-bold text-2xl underline underline-offset-4 decoration-2 mb-4">
-				General Notes
-			</h2>
-			<p>{data.generalNotes}</p>
-		</section>
+	<div class="h-48 sm:h-32" />
+	<DisplaySection data={data.warmups} title="Warmups and Scales" baseId="warmups" {richView} />
+	<DisplaySection
+		data={data.exercises}
+		title="Etudes and Exercises"
+		baseId="exercises"
+		{richView}
+	/>
+	<DisplaySection data={data.pieces} title="Pieces" baseId="pieces" {richView} />
+	{#if data.generalNotes}
+		{#if richView}
+			<section
+				id="general-notes"
+				class="my-8 bg-white shadow-md shadow-ash-gray rounded p-4 sm:p-8 flex flex-col border border-ash-gray"
+			>
+				<h2 class="font-bold text-2xl underline underline-offset-4 decoration-2 mb-4">
+					General Notes
+				</h2>
+				<p>{data.generalNotes}</p>
+			</section>
+		{:else}
+			<section id="general-notes">
+				<h2 class="font-bold text-2xl underline underline-offset-4 decoration-2 mb-4">
+					General Notes
+				</h2>
+				<p>{data.generalNotes}</p>
+			</section>
+		{/if}
 	{/if}
 </main>

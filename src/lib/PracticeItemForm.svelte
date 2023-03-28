@@ -5,6 +5,15 @@
 	export let itemType: string;
 
 	let dispatch = createEventDispatcher<{ delete: { id: number } }>();
+	let textRows = 4;
+	$: {
+		const lines = item.notes.split('\n').length;
+		if (lines > 4) {
+			textRows = lines;
+		} else {
+			textRows = 4;
+		}
+	} 
 
 	function addResource() {
 		item.resources.push('');
@@ -31,7 +40,8 @@
 		bind:value={item.notes}
 		name={`${itemType}${item.id}-notes`}
 		id={`${itemType}${item.id}-notes`}
-		class="col-span-4 mx-4 rounded w-full px-2 py-1 border-2 border-gray-200 h-32 focus:border-cool-gray focus:outline-none"
+		rows={textRows}
+		class="col-span-4 mx-4 rounded w-full px-2 py-1 border-2 border-gray-200 focus:border-cool-gray focus:outline-none"
 	/>
 
 	{#each item.resources as resource, idx (idx)}

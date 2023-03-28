@@ -30,3 +30,10 @@ export const load = (async ({ params, fetch }) => {
     ...notesData
   }
 }) satisfies PageLoad;
+
+export const config = {
+  isr: {
+    // Keep for a month
+    expiration: 60 * 60 * 24 * 30,
+  }
+}
