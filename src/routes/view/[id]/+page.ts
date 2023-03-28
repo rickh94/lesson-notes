@@ -35,5 +35,6 @@ export const config = {
   isr: {
     // Keep for a month
     expiration: 60 * 60 * 24 * 30,
-  }
+  },
+  runtime: 'nodejs18.x',
 }

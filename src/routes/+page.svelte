@@ -4,7 +4,6 @@
 	import PracticeItemForm from '$lib/PracticeItemForm.svelte';
 	import { goto } from '$app/navigation';
 	import Modal from '$lib/Modal.svelte';
-	import { fade } from 'svelte/transition';
 
 	let data = new NotesData();
 	let modalOpen = false;
