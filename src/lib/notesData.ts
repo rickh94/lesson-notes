@@ -11,13 +11,18 @@ export class NotesData {
     warmups: PracticeItem[] = [],
     exercises: PracticeItem[] = [],
     pieces: PracticeItem[] = [],
-    generalNotes = ''
+    generalNotes = '',
+    date?: Date,
   ) {
     this.warmups = warmups;
     this.exercises = exercises;
     this.pieces = pieces;
     this.generalNotes = generalNotes;
-    this.date = new Date();
+    if (date) {
+      this.date = date;
+    } else {
+      this.date = new Date();
+    }
   }
 
 }

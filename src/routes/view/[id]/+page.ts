@@ -21,7 +21,7 @@ export const load = (async ({ params, fetch }) => {
     ) {
       throw error(404, "Could not find matching notes");
     }
-    notesData = new NotesData(data.warmups, data.exercises, data.pieces, data.generalNotes);
+    notesData = new NotesData(data.warmups, data.exercises, data.pieces, data.generalNotes, new Date(data.date));
   } catch (err: any) {
     console.log(err);
     throw error(500, 'Internal server error' + err)

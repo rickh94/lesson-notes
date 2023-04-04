@@ -6,7 +6,13 @@
 	import DisplaySection from '$lib/DisplaySection.svelte';
 
 	export let data: PageData;
-	$: notesData = new NotesData(data.warmups, data.exercises, data.pieces, data.generalNotes);
+	$: notesData = new NotesData(
+		data.warmups,
+		data.exercises,
+		data.pieces,
+		data.generalNotes,
+		data.date
+	);
 
 	let richView = true;
 	let copyInput: HTMLInputElement;
