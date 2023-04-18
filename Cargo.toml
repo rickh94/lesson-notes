@@ -13,9 +13,9 @@ vercel_runtime = { version = "0.3.4" }
 serde = "1.0.158"
 rusoto_core = "0.48.0"
 rusoto_s3 = "0.48.0"
-uuid = { version = "1.3.0", features = ["v4"] }
+# uuid = { version = "1.3.0", features = ["v4"] }
 rusoto_credential = "0.48.0"
-url = "2.3.1"
+nanoid = "0.4.0"
 
 
 [lib]
@@ -24,8 +24,4 @@ path = "src-rs/lib.rs"
 [[bin]]
 name = "create"
 path = "api/create.rs"
-
-[[bin]]
-name = "view"
-path = "api/view.rs"
 

@@ -1,7 +1,7 @@
 use lesson_notes_functions::{setup_s3, ApiError, NotesData};
+use nanoid::nanoid;
 use rusoto_s3::{PutObjectRequest, S3};
 use serde_json::json;
-use uuid::Uuid;
 use vercel_runtime::{
     http::{bad_request, internal_server_error},
     run, Body, Error, Request, Response, StatusCode,
@@ -30,7 +30,7 @@ pub async fn handler(req: Request) -> Result<Response<Body>, Error> {
         }
     };
 
-    let file_id = Uuid::new_v4().to_string();
+    let file_id = nanoid!();
 
     let s3_client = match setup_s3() {
         Ok(c) => c,
